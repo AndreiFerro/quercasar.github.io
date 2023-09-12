@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer Namorar Comigo?</title>
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        #question {
+            margin-top: 20vh;
+            font-size: 24px;
+        }
+
+        #yesButton, #noButton {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #response {
+            display: none;
+            font-size: 28px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="question">
+        Quer namorar comigo?
+    </div>
+    <div id="buttons-container">
+        <button id="yesButton">Sim</button>
+        <button id="noButton">Não</button>
+    </div>
+    <div id="response"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var yesButton = document.getElementById('yesButton');
+            var noButton = document.getElementById('noButton');
+            var responseElement = document.getElementById('response');
+
+            yesButton.addEventListener('click', function () {
+                showResponse('Vou te fazer uma princesa, meu amor');
+            });
+
+            noButton.addEventListener('click', function () {
+                moveNoButton();
+            });
+
+            function showResponse(message) {
+                document.getElementById('question').style.display = 'none';
+                yesButton.style.display = 'none';
+                noButton.style.display = 'none';
+
+                responseElement.textContent = message;
+                responseElement.style.display = 'block';
+            }
+
+            function moveNoButton() {
+                var maxX = window.innerWidth - noButton.clientWidth;
+                var maxY = window.innerHeight - noButton.clientHeight;
+                var newX = Math.random() * maxX;
+                var newY = Math.random() * maxY;
+
+                noButton.style.left = newX + 'px';
+                noButton.style.top = newY + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
